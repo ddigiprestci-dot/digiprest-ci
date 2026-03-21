@@ -1,130 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DigiPrest CI - Trouvez un prestataire fiable à Abidjan en moins de 2 minutes.">
-    <meta name="theme-color" content="#ea580c">
-    <title>DigiPrest CI — Trouvez un pro en 2 minutes à Abidjan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* [VOS STYLES EXISTANTS RESTENT ICI - JE LES GARDE TOUS] */
-        :root{
-          --or:#ea580c;--orl:#fb923c;--orp:#fff7ed;
-          --gr:#16a34a;--grl:#22c55e;--grp:#f0fdf4;
-          --dk:#0c0a09;--dk2:#1c1917;--ink:#1c1917;--ink2:#57534e;--ink3:#a8a29e;
-          --bg:#fafaf9;--wh:#fff;--bd:#e7e5e4;
-          --wa:#25d366;--r:14px;--rs:10px;
-          --sh:0 2px 12px rgba(0,0,0,.07);--shl:0 16px 44px rgba(0,0,0,.11);
-          --go:#f59e0b;
-        }
-        *{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth}
-        body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
-        /* ... (Je condense pour la lecture, mais tout votre CSS est conservé) ... */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:999;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
-        .logo{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:var(--ink);text-decoration:none}
-        .logo span{color:var(--or)}
-        .nbtn{background:var(--or);color:#fff;padding:9px 17px;border-radius:99px;font-size:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;}
-        
-        /* Styles spécifiques pour le nouveau formulaire WhatsApp */
-        .insc-sec{background:var(--dk2);padding:64px 5vw; color: white;}
-        .form-card{background:var(--wh);border-radius:var(--r);padding:24px; color: var(--ink);}
-        .fg{margin-bottom:15px; display: flex; flex-direction: column; gap: 5px;}
-        .fi, .fse {padding:12px; border:1px solid var(--bd); border-radius: 8px; width: 100%;}
-        .fsub{width:100%;padding:14px;border-radius:var(--rs);border:none;background:var(--wa);color:#fff;font-size:15px;font-weight:700;cursor:pointer; display: flex; align-items: center; justify-content: center; gap: 10px;}
-        
-        /* [FIN DE VOTRE CSS] */
-    </style>
-</head>
-<body>
-
-<nav class="nav">
-    <a href="#" class="logo">DigiPrest <span>CI</span></a>
-    <div class="nav-links">
-        <a href="#prestataires" style="margin-right:15px; text-decoration:none; color:inherit;">Prestataires</a>
-        <a href="#inscription" class="nbtn">Devenir prestataire</a>
-    </div>
-</nav>
-
-<section class="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-in">
-        <div class="pill"><div class="pill-dot"></div>Abidjan · Côte d'Ivoire 🇨🇮</div>
-        <h1>Trouvez un <em>prestataire</em><br>fiable dans votre <strong>quartier</strong></h1>
-        <p class="hero-sub">Coiffure, plomberie, électricité et plus. Directement sur WhatsApp.</p>
-        <div class="hero-btns">
-            <a href="#prestataires" class="btn-hero">Trouver un pro</a>
-            <a href="#inscription" class="btn-ghost">Proposer mes services</a>
-        </div>
-    </div>
-</section>
-
-<section class="insc-sec" id="inscription">
-    <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-        <div>
-            <h2 style="font-family: 'Syne'; font-size: 32px; margin-bottom: 20px;">Rejoignez <span style="color:var(--or)">DigiPrest</span></h2>
-            <p style="opacity: 0.7; margin-bottom: 20px;">Remplissez vos infos et envoyez-les nous sur WhatsApp. Nous vous ajouterons au site gratuitement.</p>
-            <ul style="list-style: none;">
-                <li style="margin-bottom: 10px;">✅ Visibilité gratuite</li>
-                <li style="margin-bottom: 10px;">✅ Contact direct client</li>
-                <li style="margin-bottom: 10px;">✅ Sans commission</li>
-            </ul>
-        </div>
-
-        <div class="form-card">
-            <div class="fg">
-                <label class="fl">Nom & Prénom</label>
-                <input type="text" id="insc_nom" class="fi" placeholder="Ex: Jean Koffi">
-            </div>
-            <div class="fg">
-                <label class="fl">Votre Métier</label>
-                <input type="text" id="insc_job" class="fi" placeholder="Ex: Plombier, Coiffeuse...">
-            </div>
-            <div class="fg">
-                <label class="fl">Quartier (Abidjan)</label>
-                <select id="insc_zone" class="fse">
-                    <option>Cocody</option>
-                    <option>Angré</option>
-                    <option>Yopougon</option>
-                    <option>Marcory</option>
-                    <option>Riviera</option>
-                    <option>Autre...</option>
-                </select>
-            </div>
-            <div class="fg">
-                <label class="fl">Tarif de base (FCFA)</label>
-                <input type="number" id="insc_prix" class="fi" placeholder="Ex: 5000">
-            </div>
-            
-            <button onclick="sendToWhatsApp()" class="fsub">
-                S'inscrire via WhatsApp
-            </button>
-            <p style="font-size: 10px; text-align: center; margin-top: 10px; color: #999;">En cliquant, vous allez être redirigé vers notre WhatsApp pro.</p>
-        </div>
-    </div>
-</section>
-
-<script>
-    function sendToWhatsApp() {
-        // Récupération des données du formulaire
-        const nom = document.getElementById('insc_nom').value;
-        const job = document.getElementById('insc_job').value;
-        const zone = document.getElementById('insc_zone').value;
-        const prix = document.getElementById('insc_prix').value;
-
-        if(!nom || !job || !prix) {
-            alert("Veuillez remplir tous les champs avant d'envoyer.");
-            return;
-        }
-
-        // Construction du message
-        const message = `Bonjour DigiPrest CI,%0AJe souhaite m'inscrire sur le site.%0A%0A*DÉTAILS DU PRO :*%0A- Nom : ${nom}%0A- Métier : ${job}%0A- Quartier : ${zone}%0A- Tarif : ${prix} FCFA%0A%0AMerci de m'ajouter à la liste !`;
-
-        // Ouverture de WhatsApp (votre numéro : 0556312132)
-        window.open(`https://wa.me/2250556312132?text=${message}`, '_blank');
-    }
-</script>
-
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DigiPrest CI - Trouvez un prestataire fiable à Abidjan en moins de 2 minutes.">
+<meta name="theme-color" content="#ea580c">
+<title>DigiPrest CI — Trouvez un pro en 2 minutes à Abidjan</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --or:#ea580c;--orl:#fb923c;--orp:#fff7ed;
+  --gr:#16a34a;--grl:#22c55e;--grp:#f0fdf4;
+  --dk:#0c0a09;--dk2:#1c1917;--ink:#1c1917;--ink2:#57534e;--ink3:#a8a29e;
+  --bg:#fafaf9;--wh:#fff;--bd:#e7e5e4;
+  --wa:#25d366;--r:14px;--rs:10px;
+  --sh:0 2px 12px rgba(0,0,0,.07);--shl:0 16px 44px rgba(0,0,0,.11);
+  --go:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.logo{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;color:var(--ink);text-decoration:none}
+.logo span{color:var(--or)}
+.nav-links{display:flex;gap:18px;list-style:none}
+.nav-links a{color:var(--ink2);text-decoration:none;font-size:13px;font-weight:500;transition:color .18s}
+.nav-links a:hover{color:var(--or)}
+.nbtn{background:var(--or);color:#fff;padding:9px 17px;border-radius:99px;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none;transition:all .2s}
+.nbtn:hover{background:#c2410c}
+@media(max-width:680px){.nav-links{display:none}}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:88px 5vw 52px;background:var(--dk);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 60% at 15% 30%,rgba(234,88,12,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 55% at 85% 70%,rgba(22,163,74,.11) 0%,transparent 60%)}
+.hero-grid{position:absolute;inset:0;opacity:.032;background-image:linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);background-size:42px 42px}
+.hero-in{position:relative;z-index:1;max-width:720px;animation:fadeUp .65s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(234,88,12,.13);border:1px solid rgba(234,88,12,.27);color:var(--orl);padding:5px 14px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.pill-dot{width:6px;height:6px;background:var(--or);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,6vw,60px);font-weight:800;line-height:1.08;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--or)}
+.hero h1 strong{background:linear-gradient(120deg,var(--grl),#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-phrase{display:inline-block;background:rgba(234,88,12,.12);border:1px solid rgba(234,88,12,.25);color:var(--orl);padding:7px 18px;border-radius:99px;font-size:13px;font-weight:600;margin:14px 0 18px}
+.hero-sub{font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,.58);line-height:1.75;max-width:500px;margin:0 auto 28px}
+.hero-stats-band{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.hstat{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:7px 14px;backdrop-filter:blur(8px)}
+.hstat-n{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#fff}
+.hstat-n span{color:var(--or)}
+.hstat-l{font-size:11px;color:rgba(255,255,255,.45)}
+.hero-btns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.btn-hero{display:inline-flex;align-items:center;gap:7px;background:var(--or);color:#fff;padding:13px 24px;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .22s;box-shadow:0 6px 20px rgba(234,88,12,.36)}
+.btn-hero:hover{background:#c2410c;transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);color:#fff;padding:13px 22px;border-radius:99px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.17);cursor:pointer;backdrop-filter:blur(8px);transition:all .22s;font-family:'Plus Jakarta Sans',sans-serif}
+.btn-ghost:hover{background:rgba(255,255,255,.13)}
+.social-proof{display:flex;align-items:center;gap:10px;justify-content:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.07)}
+.sp-avatars{display:flex}
+.sp-av{width:32px;height:32px;border-radius:50%;border:2px solid var(--dk);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;margin-left:-8px;font-family:'Syne',sans-serif}
+.sp-av:first-child{margin-left:0}
+.sp-text{font-size:12px;color:rgba(255,255,255,.5);line-height:1.4}
+.sp-text strong{color:rgba(255,255,255,.85)}
+.search-section{padding:0 5vw;margin-top:2
