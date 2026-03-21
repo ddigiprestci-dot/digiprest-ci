@@ -731,12 +731,12 @@ async function submitInscription() {
     document.getElementById('formSuccess').classList.add('show');
     toast('🎉 Profil publié avec succès !');
 
-  } catch(err) {
-    console.error(err);
-    btn.disabled = false;
-    btn.innerHTML = '🚀 Publier mon profil maintenant';
-    toast('❌ Erreur — vérifiez votre connexion');
-  }
+ } catch(err) {
+  console.error('ERREUR COMPLETE:', err);
+  btn.disabled = false;
+  btn.innerHTML = '🚀 Publier mon profil maintenant';
+  toast('❌ ' + (err.message || 'Erreur inconnue'));
+}
 }
 
 // ═══ RENDER CATEGORIES ═══
