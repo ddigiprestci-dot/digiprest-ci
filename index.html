@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DigiPrest CI - Trouvez un prestataire fiable à Abidjan en moins de 2 minutes.">
-<meta name="theme-color" content="#ea580c">
 <title>DigiPrest CI — Trouvez un pro en 2 minutes à Abidjan</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -94,10 +92,6 @@ section{padding:60px 5vw}
 .pcard.premium::before{content:'⭐ SPONSORISÉ';position:absolute;top:0;right:0;background:var(--go);color:#78350f;font-size:9px;font-weight:800;padding:3px 9px;border-radius:0 var(--r) 0 8px}
 .pcard-head{padding:16px 16px 12px;display:flex;gap:13px;align-items:flex-start}
 .pcard-photo{width:62px;height:62px;border-radius:12px;background:linear-gradient(135deg,#f5f5f4,#e7e5e4);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;border:2px solid var(--bd);overflow:hidden;position:relative}
-.pcard-photo img{width:100%;height:100%;object-fit:cover}
-.avail-dot{position:absolute;bottom:3px;right:3px;width:10px;height:10px;border-radius:50%;border:2px solid #fff}
-.avail-dot.on{background:var(--gr)}
-.avail-dot.off{background:#e5e7eb}
 .pcard-info{flex:1;min-width:0}
 .pcard-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
 .pcard-service{font-size:12px;font-weight:600;color:var(--or);margin-bottom:3px}
@@ -113,4 +107,138 @@ section{padding:60px 5vw}
 .stars{color:#f59e0b}
 .rn{font-weight:700;color:var(--ink)}.rc{color:var(--ink3)}
 .pcard-price{font-size:13px;font-weight:700;color:var(--or)}
-.pcard-price span{font-size:10px;
+.pcard-price span{font-size:10px;font-weight:400;color:var(--ink3)}
+.pcard-tags{padding:0 16px 11px;display:flex;flex-wrap:wrap;gap:4px}
+.ptag{padding:3px 8px;border-radius:99px;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--bd);color:var(--ink2)}
+.pcard-foot{padding:11px 16px;border-top:1px solid var(--bd);display:flex;align-items:center;gap:7px}
+.pcard-tel{flex:1;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--ink);text-decoration:none;padding:8px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--bd);transition:all .18s;min-width:0;overflow:hidden}
+.pcard-tel:hover{border-color:var(--or);color:var(--or)}
+.bwa{display:inline-flex;align-items:center;gap:5px;background:var(--wa);color:#fff;padding:8px 13px;border-radius:8px;font-size:12px;font-weight:700;border:none;cursor:pointer;text-decoration:none;transition:all .18s;white-space:nowrap;flex-shrink:0}
+.bwa:hover{background:#1da851}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--wh);border-radius:20px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--bd);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--ink2);z-index:1}
+.modal-hero{background:var(--dk);padding:28px 24px 24px;border-radius:20px 20px 0 0;display:flex;gap:16px;align-items:center}
+.modal-photo{width:80px;height:80px;border-radius:16px;border:3px solid rgba(255,255,255,.15);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;background:var(--dk2)}
+.modal-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:3px}
+.modal-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px}
+.modal-body{padding:20px 24px 24px}
+.modal-section{margin-bottom:18px}
+.modal-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:8px}
+.modal-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.modal-stat{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:10px;text-align:center}
+.modal-stat-n{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--ink)}
+.modal-stat-l{font-size:10px;color:var(--ink3);margin-top:2px}
+.modal-btns{display:flex;gap:8px}
+.modal-btn-tel{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:var(--bg);border:1.5px solid var(--bd);font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;transition:all .18s}
+.modal-btn-wa{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:var(--wa);color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+/* INSCRIPTION SECTION */
+.insc-sec{background:var(--dk2);padding:64px 5vw}
+.insc-in{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media(max-width:640px){.insc-in{grid-template-columns:1fr}}
+.insc-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3.5vw,32px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:12px}
+.insc-title span{color:var(--or)}
+.insc-sub{font-size:13px;color:rgba(255,255,255,.48);line-height:1.7;margin-bottom:18px}
+.insc-perks{display:flex;flex-direction:column;gap:9px}
+.insc-perk{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:rgba(255,255,255,.62)}
+.insc-perk-i{width:18px;height:18px;border-radius:50%;background:rgba(234,88,12,.18);color:var(--or);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0;margin-top:1px}
+.form-card{background:var(--wh);border-radius:var(--r);padding:24px}
+.form-title{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.form-subtitle{font-size:12px;color:var(--ink3);margin-bottom:18px}
+.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.fl{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+.fi{padding:10px 12px;border:1.5px solid var(--bd);border-radius:var(--rs);font-size:13px;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:border-color .18s;background:var(--wh);width:100%}
+.fi:focus{border-color:var(--or)}
+.fsub{width:100%;padding:14px;border-radius:var(--rs);border:none;background:var(--or);color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px}
+.fsub:hover{background:#c2410c;transform:translateY(-1px)}
+footer{background:var(--dk);padding:48px 5vw 22px;color:white}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo">DigiPrest <span>CI</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#prestataires">Prestataires</a></li>
+    <li><a href="#inscription">S'inscrire</a></li>
+  </ul>
+  <div><a href="#inscription" class="nbtn">Devenir prestataire</a></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-in">
+    <div class="pill"><div class="pill-dot"></div>Abidjan · Côte d'Ivoire 🇨🇮</div>
+    <h1>Trouvez un <em>prestataire</em><br>fiable dans votre <strong>quartier</strong></h1>
+    <div class="hero-phrase">⚡ Trouvez un prestataire fiable à Abidjan en moins de 2 minutes</div>
+    <p class="hero-sub">Coiffure, plomberie, traiteur, cours particuliers, électricité et plus.</p>
+    <div class="hero-btns">
+      <a href="#prestataires" class="btn-hero">Trouver un prestataire</a>
+      <a href="#inscription" class="btn-ghost">💼 Proposer mes services</a>
+    </div>
+  </div>
+</section>
+
+<section class="presta-sec" id="prestataires">
+  <h2 class="st">Nos prestataires</h2>
+  <div class="presta-grid" id="prestaGrid">
+    <div class="pcard">
+      <div class="pcard-head">
+        <div class="pcard-photo">👨‍🔧</div>
+        <div class="pcard-info">
+          <div class="pcard-name">Kouassi Ibrahim</div>
+          <div class="pcard-service">Plombier Professionnel</div>
+          <div class="pcard-zone">📍 Yopougon, Abidjan</div>
+        </div>
+      </div>
+      <div class="pcard-foot">
+        <a href="tel:0556312132" class="pcard-tel">05 56 31 21 32</a>
+        <a href="https://wa.me/2250556312132" class="bwa">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insc-sec" id="inscription">
+  <div class="insc-in">
+    <div>
+      <h2 class="insc-title">Rejoignez <span>DigiPrest CI</span></h2>
+      <p class="insc-sub" style="color:#aaa">Envoyez vos infos via WhatsApp pour être ajouté au site gratuitement.</p>
+      <div class="insc-perks">
+        <div class="insc-perk"><div class="insc-perk-i">✓</div> 100% Gratuit</div>
+        <div class="insc-perk"><div class="insc-perk-i">✓</div> Visibilité à Abidjan</div>
+      </div>
+    </div>
+    <div>
+      <div class="form-card">
+        <div class="form-title">Votre Inscription</div>
+        <div class="fg">
+          <label class="fl">Nom Complet</label>
+          <input type="text" id="wa_nom" class="fi" placeholder="Ex: Bakayoko Moussa">
+        </div>
+        <div class="fg">
+          <label class="fl">Votre Métier</label>
+          <input type="text" id="wa_job" class="fi" placeholder="Ex: Électricien">
+        </div>
+        <div class="fg">
+          <label class="fl">Quartier</label>
+          <input type="text" id="wa_zone" class="fi" placeholder="Ex: Angré">
+        </div>
+        <button onclick="envoyerWA()" class="fsub">S'inscrire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="text-align:center; padding: 20px;">
+    <p>© 2026 DigiPrest CI. Contact : 05 56 31 21 32</p>
+  </div>
+</footer>
+
+<script>
+function envoyerWA() {
+    const nom =
